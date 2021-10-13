@@ -1,0 +1,509 @@
+# Program: Nutrition Assistant
+
+# Author: TUAN LUC LU
+
+# Date: 10 May 2020
+
+# Revised: 
+
+APPLE = 'apple'
+AVOCADO = 'avocado'
+BANANA = 'banana'
+CANTALOUPE = 'cantaloupe'
+GRAPEFRUIT = 'grapefruit'
+GRAPES = 'grapes'
+HONEYDEW_MELON = 'honeydew'
+KIWIFRUIT = 'kiwi'
+LEMON = 'lemon'
+LIME = 'lime'
+NECTARINE = 'nectarine'
+ORANGE = 'orange'
+PEACH = 'peach'
+PEAR = 'pear'
+PINEAPPLE = 'pineapple'
+PLUMS = 'plums'
+STRAWBERRIES = 'strawberries'
+SWEET_CHERRIES = 'cherries'
+TANGERINE = 'tangerline'
+WATERMELON = 'watermelon'
+
+    
+calories = {                      # The intake 
+    APPLE: 130,
+    AVOCADO: 50,
+    BANANA: 110,
+    CANTALOUPE: 50,
+    GRAPEFRUIT: 60,
+    GRAPES: 90,
+    HONEYDEW_MELON: 50,
+    KIWIFRUIT: 90,
+    LEMON: 15,
+    LIME: 20,
+    NECTARINE: 60,
+    ORANGE: 80,
+    PEACH: 60,
+    PEAR: 100,
+    PINEAPPLE: 50,
+    PLUMS: 70,
+    STRAWBERRIES: 50,
+    SWEET_CHERRIES: 100,
+    TANGERINE: 50,
+    WATERMELON: 80,
+}
+
+fat = {                      # %DV (unit %)
+    APPLE: 0,
+    AVOCADO: 7,
+    BANANA: 0,
+    CANTALOUPE: 0,
+    GRAPEFRUIT: 0,
+    GRAPES: 0,
+    HONEYDEW_MELON: 0,
+    KIWIFRUIT: 2,
+    LEMON: 0,
+    LIME: 0,
+    NECTARINE: 1,
+    ORANGE: 0,
+    PEACH: 1,
+    PEAR: 0,
+    PINEAPPLE: 0,
+    PLUMS: 0,
+    STRAWBERRIES: 0,
+    SWEET_CHERRIES: 0,
+    TANGERINE: 0,
+    WATERMELON: 0,
+}
+
+sodium = {                      # %DV (unit %)
+    APPLE: 0,
+    AVOCADO: 0,
+    BANANA: 0,
+    CANTALOUPE: 1,
+    GRAPEFRUIT: 0,
+    GRAPES: 1,
+    HONEYDEW_MELON: 1,
+    KIWIFRUIT: 0,
+    LEMON: 0,
+    LIME: 0,
+    NECTARINE: 0,
+    ORANGE: 0,
+    PEACH: 0,
+    PEAR: 0,
+    PINEAPPLE: 0,
+    PLUMS: 0,
+    STRAWBERRIES: 0,
+    SWEET_CHERRIES: 0,
+    TANGERINE: 0,
+    WATERMELON: 0,
+}
+
+potassium = {                      # %DV (unit %)
+    APPLE: 7,
+    AVOCADO: 4,
+    BANANA: 13,
+    CANTALOUPE: 7,
+    GRAPEFRUIT: 5,
+    GRAPES: 7,
+    HONEYDEW_MELON: 6,
+    KIWIFRUIT: 13,
+    LEMON: 2,
+    LIME: 2,
+    NECTARINE: 7,
+    ORANGE: 7,
+    PEACH: 7,
+    PEAR: 5,
+    PINEAPPLE: 3,
+    PLUMS: 7,
+    STRAWBERRIES: 5,
+    SWEET_CHERRIES: 10,
+    TANGERINE: 5,
+    WATERMELON: 8,
+}
+
+carb = {                      # %DV (unit %)
+    APPLE: 11,
+    AVOCADO: 1,
+    BANANA: 10,
+    CANTALOUPE: 4,
+    GRAPEFRUIT: 5,
+    GRAPES: 8,
+    HONEYDEW_MELON: 4,
+    KIWIFRUIT: 7,
+    LEMON: 2,
+    LIME: 2,
+    NECTARINE: 5,
+    ORANGE: 6,
+    PEACH: 5,
+    PEAR: 9,
+    PINEAPPLE: 4,
+    PLUMS: 6,
+    STRAWBERRIES: 4,
+    SWEET_CHERRIES: 9,
+    TANGERINE: 4,
+    WATERMELON: 7,
+}
+
+fiber = {                      # %DV (unit %)
+    APPLE: 20,
+    AVOCADO: 4,
+    BANANA: 12,
+    CANTALOUPE: 4,
+    GRAPEFRUIT: 8,
+    GRAPES: 4,
+    HONEYDEW_MELON: 4,
+    KIWIFRUIT: 16,
+    LEMON: 8,
+    LIME: 8,
+    NECTARINE: 8,
+    ORANGE: 12,
+    PEACH: 8,
+    PEAR: 24,
+    PINEAPPLE: 4,
+    PLUMS: 8,
+    STRAWBERRIES: 8,
+    SWEET_CHERRIES: 4,
+    TANGERINE: 8,
+    WATERMELON: 4,
+}
+
+protein = {                      # The intake (unit g)
+    APPLE: 1,
+    AVOCADO: 1,
+    BANANA: 1,
+    CANTALOUPE: 1,
+    GRAPEFRUIT: 1,
+    GRAPES: 0,
+    HONEYDEW_MELON: 1,
+    KIWIFRUIT: 1,
+    LEMON: 0,
+    LIME: 0,
+    NECTARINE: 1,
+    ORANGE: 1,
+    PEACH: 1,
+    PEAR: 1,
+    PINEAPPLE: 1,
+    PLUMS: 1,
+    STRAWBERRIES: 1,
+    SWEET_CHERRIES: 1,
+    TANGERINE: 1,
+    WATERMELON: 1,
+}
+
+sugars = {                      # The intake (unit g)
+    APPLE: 25,
+    AVOCADO: 0,
+    BANANA: 19,
+    CANTALOUPE: 11,
+    GRAPEFRUIT: 11,
+    GRAPES: 20,
+    HONEYDEW_MELON: 11,
+    KIWIFRUIT: 13,
+    LEMON: 2,
+    LIME: 0,
+    NECTARINE: 11,
+    ORANGE: 14,
+    PEACH: 13,
+    PEAR: 16,
+    PINEAPPLE: 10,
+    PLUMS: 16,
+    STRAWBERRIES: 8,
+    SWEET_CHERRIES: 16,
+    TANGERINE: 9,
+    WATERMELON: 20,
+}
+
+a = {                    # %DV (unit %)
+    APPLE: 2,
+    AVOCADO: 0,
+    BANANA: 2,
+    CANTALOUPE: 120,
+    GRAPEFRUIT: 35,
+    GRAPES: 0,
+    HONEYDEW_MELON: 2,
+    KIWIFRUIT: 2,
+    LEMON: 0,
+    LIME: 0,
+    NECTARINE: 8,
+    ORANGE: 2,
+    PEACH: 6,
+    PEAR: 0,
+    PINEAPPLE: 2,
+    PLUMS: 8,
+    STRAWBERRIES: 0,
+    SWEET_CHERRIES: 2,
+    TANGERINE: 6,
+    WATERMELON: 30,
+}
+
+c = {                      #Vitamin C %DV
+    APPLE: 8,
+    AVOCADO: 4,
+    BANANA: 15,
+    CANTALOUPE: 80,
+    GRAPEFRUIT: 100,
+    GRAPES: 2,
+    HONEYDEW_MELON: 45,
+    KIWIFRUIT: 240,
+    LEMON: 40,
+    LIME: 35,
+    NECTARINE: 15,
+    ORANGE: 130,
+    PEACH: 15,
+    PEAR: 10,
+    PINEAPPLE: 50,
+    PLUMS: 10,
+    STRAWBERRIES: 160,
+    SWEET_CHERRIES: 15,
+    TANGERINE: 45,
+    WATERMELON: 25,
+}
+
+calcium = {                      #calcium %DV
+    APPLE: 2,
+    AVOCADO: 0,
+    BANANA: 0,
+    CANTALOUPE: 2,
+    GRAPEFRUIT: 4,
+    GRAPES: 2,
+    HONEYDEW_MELON: 2,
+    KIWIFRUIT: 4,
+    LEMON: 2,
+    LIME: 0,
+    NECTARINE: 0,
+    ORANGE: 6,
+    PEACH: 0,
+    PEAR: 2,
+    PINEAPPLE: 2,
+    PLUMS: 0,
+    STRAWBERRIES: 2,
+    SWEET_CHERRIES: 2,
+    TANGERINE: 4,
+    WATERMELON: 2,
+}
+
+iron = {                      #iron %DV
+    APPLE: 2,
+    AVOCADO: 2,
+    BANANA: 2,
+    CANTALOUPE: 2,
+    GRAPEFRUIT: 0,
+    GRAPES: 0,
+    HONEYDEW_MELON: 2,
+    KIWIFRUIT: 2,
+    LEMON: 0,
+    LIME: 0,
+    NECTARINE: 2,
+    ORANGE: 0,
+    PEACH: 2,
+    PEAR: 0,
+    PINEAPPLE: 2,
+    PLUMS: 2,
+    STRAWBERRIES: 2,
+    SWEET_CHERRIES: 2,
+    TANGERINE: 0,
+    WATERMELON: 4,
+}
+
+
+def main():
+    QUIT = 0
+    total_C = 0
+    total_A = 0
+    total_Calcium = 0
+    total_Iron = 0
+    total_Protein = 0
+    total_Calories = 0
+    total_Sugars = 0
+    total_Fat = 0
+    total_Sodium = 0
+    total_Potassium = 0
+    total_Carb = 0
+    total_Fiber = 0
+
+    print("Welcome to the Nutritional Checking program!")
+    
+    valid_inputs = [APPLE, AVOCADO, BANANA, CANTALOUPE, GRAPEFRUIT, GRAPES, HONEYDEW_MELON, KIWIFRUIT, LEMON, LIME, NECTARINE, ORANGE, PEACH, PEAR, PINEAPPLE, PLUMS, STRAWBERRIES, SWEET_CHERRIES, TANGERINE, WATERMELON]
+    print()
+    menu()
+    fruits_count = int(input('How many fruits have you eaten today? '))
+    print()
+    while fruits_count <= QUIT:
+        print('Invalid input')
+        fruits_count = int(input('Please enter a positive number: '))
+        
+    for fruit in range(1, fruits_count + 1):
+        fruit = input('Please enter the fruit name in the list: ')
+        while fruit not in valid_inputs:
+            print('Invalid input')
+            fruit = input('Please enter the fruit in the list: ')
+        if fruit in c:
+            total_C += c[fruit]
+        if fruit in a:
+            total_A += a[fruit]
+        if fruit in calcium:
+            total_Calcium += calcium[fruit]
+        if fruit in iron:
+            total_Iron += iron[fruit]
+        if fruit in protein:
+            total_Protein += protein[fruit]
+        if fruit in calories:
+            total_Calories += calories[fruit]
+        if fruit in sugars:
+            total_Sugars += sugars[fruit]
+        if fruit in fat:
+            total_Fat += fat[fruit]
+        if fruit in sodium:
+            total_Sodium += sodium[fruit]
+        if fruit in potassium:
+            total_Potassium += potassium[fruit]
+        if fruit in carb:
+            total_Carb += carb[fruit]
+        if fruit in fiber:
+            total_Fiber += fiber[fruit]
+
+    print('---------------------------------------------------------------------------')
+    print('The result of nutritional checking: ', '\t', '(%DV: Percent Daily Value)')
+    print()
+    print(f'The total amount of Calories: {total_Calories}')
+    print()
+    print(f'The total amount of Protein: {total_Protein}', 'g', sep='')
+    print()
+    print(f'The total amount of Sugars: {total_Sugars}', 'g', sep='')
+    print()
+    print(f'%DV of Fat: {total_Fat}', '%', sep='')
+    print()
+    print(f'%DV of Sodium: {total_Sodium}', '%', sep='')
+    print()
+    print(f'%DV of Potassium: {total_Potassium}', '%', sep='')
+    print()
+    print(f'%DV of Carb: {total_Carb}', '%', sep='')
+    print()
+    print(f'%DV of Fiber: {total_Fiber}', '%', sep='')
+    print()
+    print(f'%DV of Vitamin C: {total_C}', '%', sep='')
+    print()
+    print(f'%DV of Vitamin A: {total_A}', '%', sep='')
+    print()
+    print(f'%DV of Calcium: {total_Calcium}', '%', sep='')
+    print()
+    print(f'%DV of Iron: {total_Iron}', '%', sep='')
+    print('---------------------------------------------------------------------------')
+    
+    print('Would you like to proceed with the second part of the program?')
+    go_on = input("Please press 'y' for Yes and 'q' to Quit: ")
+    
+    while go_on != 'q':
+        print()
+        print("Welcome to the Nutritional Searching Engine!")
+        vitamins()
+        nutri_name = input('Please enter the name of a Vitamin/Mineral in the list: ')
+        print()
+        if nutri_name == "vitamin a" or nutri_name == "Vitamin A":
+            infile = open('VitaminA.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "vitamin c" or nutri_name == "Vitamin C":
+            infile = open('VitaminC.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "vitamin b6" or nutri_name == "Vitamin B6":
+            infile = open('VitaminB6.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "vitamin b12" or nutri_name == "Vitamin B12":
+            infile = open('VitaminB12.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "vitamin d" or nutri_name == "Vitamin D":
+            infile = open('VitaminD.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "vitamin e" or nutri_name == "Vitamin E":
+            infile = open('VitaminE.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "vitamin k" or nutri_name == "Vitamin K":
+            infile = open('VitaminK.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "calcium" or nutri_name == "Calcium":
+            infile = open('Calcium.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "potassium" or nutri_name == "Potassium":
+            infile = open('Potassium.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "thiamin" or nutri_name == "Thiamin":
+            infile = open('Thiamin.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "niacin" or nutri_name == "Niacin":
+            infile = open('Niacin.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "folic acid" or nutri_name == "Folic Acid":
+            infile = open('FolicAcid.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "biotin" or nutri_name == "Biotin":
+            infile = open('Biotin.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "iron" or nutri_name == "Iron":
+            infile = open('Iron.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "riboflavin" or nutri_name == "Riboflavin":
+            infile = open('Riboflavin.txt', 'r')
+            read = infile.read()
+            print( read )
+        if nutri_name == "pantothenic acid" or nutri_name == "Pantothenic Acid":
+            infile = open('PantothenicAcid.txt', 'r')
+            read = infile.read()
+            print( read )
+    
+        go_on = input("To try another Vitamin/Mineral press 'y' or 'q' for Quit: ")
+                 
+    print('---------------------------------------------------------------------------')
+    print( 'Glad to help you and by your side for a better lifestyle.' )
+    print( 'Stay healthy and safe!' )
+
+
+def menu():
+    print ('This is the list of 20 most frequently consumed raw fruits in the United States')
+    list1 = ['apple', 'avocado', 'banana', 'pineapple', 'grapefruit']
+    list2 = ['grapes', 'kiwi', 'lemon', 'lime', 'tangerline']
+    list3 = ['orange', 'peach', 'pear', 'nectarine', 'cantaloupe']
+    list4 = ['cherries', 'plums', 'honeydew', 'watermelon', 'strawberries']
+    print('---------------------------------------------------------------------------')
+    print()
+    print ( format(list1[0], '10'), format(list1[1], '10'), format(list1[2], '10'), format(list1[3], '14'), format(list1[4], '10') )
+    print()
+    print ( format(list2[0], '10'), format(list2[1], '10'), format(list2[2], '10'), format(list2[3], '14'), format(list2[4], '10') )
+    print()
+    print ( format(list3[0], '10'), format(list3[1], '10'), format(list3[2], '10'), format(list3[3], '14'), format(list3[4], '10') )
+    print()
+    print ( format(list4[0], '10'), format(list4[1], '10'), format(list4[2], '10'), format(list4[3], '14'), format(list4[4], '10') )
+    print()
+    print('---------------------------------------------------------------------------')
+        
+def vitamins():
+    list1 = ['Vitamin A', 'Vitamin B6', 'Vitamin B12', 'Vitamin C']
+    list2 = ['Vitamin D', 'Vitamin E', 'Vitamin K', 'Calcium']
+    list3 = ['Potassium', 'Thiamin', 'Niacin', 'Folic Acid' ]
+    list4 = ['Biotin', 'Iron', 'Riboflavin', 'Pantothenic Acid']
+    print('---------------------------------------------------------------------------')
+    print()
+    print ( format(list1[0], '12'), format(list1[1], '13'), format(list1[2], '15'), format(list1[3], '14') )
+    print()
+    print ( format(list2[0], '12'), format(list2[1], '13'), format(list2[2], '15'), format(list2[3], '14') )
+    print()
+    print ( format(list3[0], '12'), format(list3[1], '13'), format(list3[2], '15'), format(list3[3], '14') )
+    print()
+    print ( format(list4[0], '12'), format(list4[1], '13'), format(list4[2], '15'), format(list4[3], '14') )
+    print()
+    print('---------------------------------------------------------------------------')
+    
+    
+main()
